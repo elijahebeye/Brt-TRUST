@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
+import { getSupabaseClient } from "../lib/supabaseClient";
 import ProfileCard from "../components/ProfileCard";
 
 export default function LeaderboardPage() {
   const [list, setList] = useState<any[]>([]);
 
   const fetchList = async () => {
+    const supabase = getSupabaseClient();
     const { data, error } = await supabase
       .from("users")
       .select("*")
@@ -18,6 +19,7 @@ export default function LeaderboardPage() {
   useEffect(() => {
     fetchList();
 
+    const supabase = getSupabaseClient();
     const channel = supabase
       .channel("public:users")
       .on(

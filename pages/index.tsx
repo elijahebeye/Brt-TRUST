@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
+import { getSupabaseClient } from "../lib/supabaseClient";
 
 export default function Home() {
   const [session, setSession] = useState<any>(null);
 
   useEffect(() => {
+    const supabase = getSupabaseClient();
     supabase.auth.getSession().then(({ data: { session } }) => setSession(session));
     supabase.auth.onAuthStateChange((_event, session) => setSession(session));
   }, []);
 
   const signIn = async () => {
+    const supabase = getSupabaseClient();
     await supabase.auth.signInWithOAuth({ provider: "discord" });
   };
 
   const signOut = async () => {
+    const supabase = getSupabaseClient();
     await supabase.auth.signOut();
   };
 
