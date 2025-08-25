@@ -1,0 +1,4 @@
+body { margin: 0; font-family: Inter, Roboto, Arial, sans-serif; background: #f7fafc; color: #0f172a; }
+input { padding: 8px; border-radius: 6px; border: 1px solid #d1d5db; }
+button { padding: 8px 12px; border-radius: 6px; background: #111827; color: white; border: none; cursor: pointer; }
+a { color: #2563eb; }

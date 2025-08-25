@@ -1,0 +1,14 @@
+Deploy steps (quick):
+
+1) Create a Supabase project: https://app.supabase.com
+2) In Supabase -> SQL Editor, run sql.sql (copy & paste)
+3) In Supabase -> Settings -> API, copy Project URL and Anon key
+4) Create OAuth apps on Discord and/or Twitter and set redirect per Supabase docs (use your Vercel URL)
+5) Create a GitHub repo and upload these files (or directly upload using GitHub web UI)
+6) Create a Vercel account: https://vercel.com and import the GitHub repo
+7) In Vercel Project Settings -> Environment Variables, add:
+   NEXT_PUBLIC_SUPABASE_URL = <project url>
+   NEXT_PUBLIC_SUPABASE_ANON_KEY = <anon key>
+   SUPABASE_SERVICE_ROLE_KEY = <service role key>   (secret!)
+   SUPABASE_URL = <project url>   (optional)
+8) Deploy. First logins will create profiles and assign TRUST to first 400 signups.
